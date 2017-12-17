@@ -27,7 +27,6 @@ function o.write(self, section, value)
 	return Flag.write(self, section, value)
 end
 
-
 o = s:taboption("general", Value, "Port", translate("Listen port"),
 	translate("Specifies the HTTP port Tinyproxy is listening on for requests"))
 
@@ -99,6 +98,14 @@ o = s:taboption("general", Value, "Group", translate("Group"),
 
 o.default = "nogroup"
 
+o = s:taboption("general", Flag, "ReverseOnly", translate("Reverse proxy only"),
+	translate("When using Tinyproxy as a reverse proxy, it is STRONGLY recommended that the normal proxy is turned off."))
+
+o = s:taboption("general", Flag, "ReverseMagic", translate("Use cookies"),
+	translate("Use a cookie to track reverse proxy mappings. If you need to reverse proxy sites which have absolute links you must use this option."))
+
+o = s:taboption("general", Value, "ReverseBaseURL", translate("Proxy URL"),
+	translate("The URL that is used to access this reverse proxy. The URL is used to rewrite HTTP redirects so that they won’t escape the proxy. If you have a chain of reverse proxies, you’ll need to put the outermost URL here (the address which the end user types into his/her browser). If this option is not set then no rewriting of redirects occurs."))
 
 --
 -- Privacy
