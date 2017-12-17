@@ -250,16 +250,19 @@ return m
 -- Reverse Paths
 --
 
-s = m:section(TypedSection, "reverse", translate("Reverse Proxie Paths"),
+s = m:section(TypedSection, "ReversePath", translate("Reverse Proxie Paths"),
 	translate("Configure one or more ReversePath directives to enable reverse proxy support. With reverse proxying it’s possible to make a number of sites appear as if they were part of a single site."))
 
 s.anonymous = true
 s.addremove = true
 
 p = s:option(Value, "path", translate("Domain Path"),
-	translate("The domain path to map to a URL. ie. /example/"))
+	translate("The domain path to map to a URL."))
+p.placeholder = "/example/"
+p.rmempty = true
 
 tgt = s:option(Value, "target", translate("Target URL"),
-	translate("Reverse proxy target URL. ie. http://www.example.com/"))
+	translate("Reverse proxy target URL."))
+p.placeholder = "http://www.example.com/"
 
 return m
